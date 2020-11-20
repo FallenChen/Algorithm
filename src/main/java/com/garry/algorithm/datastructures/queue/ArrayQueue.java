@@ -31,28 +31,39 @@ public class ArrayQueue<T> implements Queue<T> {
 
     @Override
     public T poll() {
-        // TODO Auto-generated method stub
-        return null;
+        if(isEmpty()){
+            throw new RuntimeException("Queue is empty");
+        }
+        front = adjustIndex(front, data.length);
+        return (T)data[front++];
     }
 
     @Override
     public T peek() {
-        // TODO Auto-generated method stub
-        return null;
+        if(isEmpty()){
+            throw new RuntimeException("Queue is empty");
+        }
+        front = adjustIndex(front, data.length);
+        return (T)data[front];
     }
 
     @Override
     public int size() {
-        // TODO Auto-generated method stub
-        return 0;
+                return adjustIndex(rear + data.length - front, data.length);
+    }
+
+    private int adjustIndex(int index, int size){
+        return index >= size ? index - size : index;
     }
 
     @Override
     public boolean isEmpty() {
-        // TODO Auto-generated method stub
-        return false;
+        
+        return rear == front;
     }
     
-
+    public boolean isFull(){
+        return (front + data.length - rear) % data.length == 1;
+    }
 
 }
