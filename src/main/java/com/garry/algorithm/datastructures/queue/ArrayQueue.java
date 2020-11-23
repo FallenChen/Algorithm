@@ -51,6 +51,8 @@ public class ArrayQueue<T> implements Queue<T> {
         return (T)data[front];
     }
 
+    
+    // todo 不好想
     @Override
     public int size() {
                 return adjustIndex(rear + data.length - front, data.length);
@@ -70,9 +72,5 @@ public class ArrayQueue<T> implements Queue<T> {
         return (front + data.length - rear) % data.length == 1;
     }
 
-
-    public static void main(String[] args) {
-        System.out.println(1 % 9);
-    }
 
 }
