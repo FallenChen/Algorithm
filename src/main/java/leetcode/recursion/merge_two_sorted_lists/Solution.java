@@ -1,4 +1,4 @@
-package leetcode.merge_two_sorted_lists;
+package leetcode.recursion.merge_two_sorted_lists;
 
 /**
  * @author cy
