@@ -48,6 +48,7 @@ public class Solution {
      * @return
      */
     public int maxPathSum(TreeNode root) {
+        // the sum might be negative,so 0 is not the min
         maxValue = Integer.MIN_VALUE;
         maxPathDown(root);
         return maxValue;
@@ -59,9 +60,24 @@ public class Solution {
         {
             return 0;
         }
+        // must have node,so if < 0 then use 0 to continue
         int left = Math.max(0, maxPathDown(node.left));
         int right = Math.max(0, maxPathDown(node.right));
+        // maxValue is the value which recording whether this current root is the fina root
         maxValue = Math.max(maxValue,(left + right + node.val));
+        // first,return value used in left or right value,so that the program execution can continue
+        // second,
+        return Math.max(left,right) + node.val;
+    }
+
+    public static void main(String[] args) {
+        TreeNode leftNode = new TreeNode(2);
+        TreeNode rightNode = new TreeNode(3);
+        TreeNode treeNode = new TreeNode(1,leftNode,rightNode);
+
+        Solution solution = new Solution();
+        int sum = solution.maxPathSum(treeNode);
+        System.out.println(sum);
 
     }
 }
