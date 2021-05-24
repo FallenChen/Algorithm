@@ -66,7 +66,7 @@ public class Solution {
         // maxValue is the value which recording whether this current root is the fina root
         maxValue = Math.max(maxValue,(left + right + node.val));
         // first,return value used in left or right value,so that the program execution can continue
-        // second,
+        // second, returns the maximum sum of the path that can be extended to input node's parent
         return Math.max(left,right) + node.val;
     }
 

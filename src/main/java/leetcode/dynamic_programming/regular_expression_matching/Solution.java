@@ -1,4 +1,4 @@
-package leetcode.regular_expression_matching;
+package leetcode.dynamic_programming.regular_expression_matching;
 
 /**
  * @ClassName Solution
