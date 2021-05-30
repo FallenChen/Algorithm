@@ -26,7 +26,7 @@ public class Solution {
      * @param nums
      * @return
      */
-    public int maxiumGap(int[] nums)
+    public static int maxiumGap(int[] nums)
     {
         if(nums == null || nums.length < 2)
         {
@@ -55,12 +55,12 @@ public class Solution {
                 continue;
             int idx = (i-min)/gap;// index of the right position in the buckets
             bucketsMIN[idx] = Math.min(i, bucketsMIN[idx]);
-            bucketsMAX[idx] = Math.min(i, bucketsMAX[idx]);
+            bucketsMAX[idx] = Math.max(i, bucketsMAX[idx]);
         }
         // scan the buckets for the max gap
         int maxGap = Integer.MIN_VALUE;
         int previous = min;
-        for (int i=0; i<nums.length;i++)
+        for (int i=0; i<nums.length - 1;i++)
         {
             if(bucketsMIN[i] == Integer.MAX_VALUE && bucketsMAX[i] == Integer.MIN_VALUE )
                 continue;
@@ -71,5 +71,11 @@ public class Solution {
         }
         maxGap = Math.max(maxGap, max - previous);//update the final max value gap
         return maxGap;
+    }
+
+    public static void main(String[] args) {
+        int nums[] = {3,6,9,1};
+        int i = maxiumGap(nums);
+        System.out.println(i);
     }
 }
