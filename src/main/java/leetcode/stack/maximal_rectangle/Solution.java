@@ -1,5 +1,7 @@
 package leetcode.stack.maximal_rectangle;
 
+import java.util.Arrays;
+
 /**
  * @author cy
  * @className Solution
@@ -31,7 +33,7 @@ public class Solution {
      * @param matrix
      * @return
      */
-    public int maximalRectangle(char[][] matrix)
+    public static int maximalRectangle(char[][] matrix)
     {
         if(matrix == null || matrix.length == 0 || matrix[0] == null || matrix[0].length == 0)
         {
@@ -39,10 +41,51 @@ public class Solution {
         }
 
         int m = matrix.length, n=matrix[0].length, maxArea = 0;
+        int[] left = new int[n];
+        int[] right = new int[n];
+        int[] height = new int[n];
+        Arrays.fill(right,n-1);
 
         for(int i=0;i<m;i++)
         {
-
+            int rb = n-1;
+            for(int j = n-1; j>=0; j--)
+            {
+                if(matrix[i][j] == '1')
+                {
+                    right[j] = Math.min(right[j],rb);
+                }else
+                {
+                    right[j] = n - 1;
+                    rb = j - 1;
+                }
+            }
+            int lb = 0;
+            for(int j=0; j<n;j++)
+            {
+                if(matrix[i][j] == '1')
+                {
+                    left[j] = Math.max(left[j],lb);
+                    height[j]++;
+                    maxArea = Math.max(maxArea, height[j] * (right[j] - left[j] + 1));
+                }else
+                {
+                    height[j] = 0;
+                    left[j] = 0;
+                    lb = j + 1;
+                }
+            }
         }
+        return maxArea;
+    }
+
+    public static void main(String[] args) {
+        char[][] matrix = {
+                {'1','0','1','0','0'},
+                {'1','0','1','1','1'},
+                {'1','1','1','1','1'},
+                {'1','0','0','1','0'}};
+        int i = maximalRectangle(matrix);
+        System.out.println(i);
     }
 }
