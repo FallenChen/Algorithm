@@ -1,4 +1,4 @@
-package leetcode.dynamic_programming.longest_valid_parentheses;
+package leetcode.string.longest_valid_parentheses;
 
 import java.util.Stack;
 
