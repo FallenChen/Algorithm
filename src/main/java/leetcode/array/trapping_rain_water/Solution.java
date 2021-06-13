@@ -25,21 +25,54 @@ public class Solution {
      */
     public int trap(int[] height) {
         // Brute force
-        int ans = 0;
-        int size = height.length;
-        for(int i=1;i<size-1;i++)
+//        int ans = 0;
+//        int size = height.length;
+//        for(int i=1;i<size-1;i++)
+//        {
+//            int max_left = 0;
+//            int max_right = 0;
+//            for(int j=i; j>=0; j--)
+//            {
+//                max_left = Math.max(max_left,height[j]);
+//            }
+//            for(int j=i; j<size;j++)
+//            {
+//                max_right = Math.max(max_right,height[j]);
+//            }
+//            ans += Math.min(max_left,max_right) - height[i];
+//        }
+//        return ans;
+
+        // two pointer
+        if(height.length == 0)
         {
-            int max_left = 0;
-            int max_right = 0;
-            for(int j=i; j>=0; j--)
+            return 0;
+        }
+
+        int left = 0;
+        int right = height.length-1;
+        int leftMax = 0;
+        int rightMax = 0;
+        int ans = 0;
+        while (left < right)
+        {
+            if(height[left] > leftMax)
             {
-                max_left = Math.max(max_left,height[j]);
+                leftMax = height[left];
             }
-            for(int j=i; j<size;j++)
+            if(height[right] > rightMax)
             {
-                max_right = Math.max(max_right,height[j]);
+                rightMax = height[right];
             }
-            ans += Math.min(max_left,max_right) - height[i];
+            if(leftMax < rightMax)
+            {
+                ans += Math.max(0,leftMax - height[left]);
+                left++;
+            }else
+            {
+                ans += Math.max(0,rightMax - height[right]);
+                right--;
+            }
         }
         return ans;
     }
