@@ -35,13 +35,15 @@ public class Solution {
      * @param n
      * @return
      */
-    public int twoEggDrop(int n)
+    public static int twoEggDrop(int n)
     {
         int eggs = 2;
         return drop(n,eggs,new int[n + 1][eggs + 1]);
     }
 
-    int drop(int floors, int eggs, int[][] dp)
+    // If the egg breaks, the problem is reduced to x-1 eggs and i - 1 floors
+    // If the eggs does not break, the problem is reduced to x eggs and n-i floors
+    static int drop(int floors, int eggs, int[][] dp)
     {
         if(eggs == 1 || floors <= 1)
             return floors;
@@ -55,4 +57,10 @@ public class Solution {
         dp[floors][eggs] = min;
         return min;
     }
+
+    public static void main(String[] args) {
+        int i = twoEggDrop(100);
+        System.out.println(i);
+    }
+
 }
