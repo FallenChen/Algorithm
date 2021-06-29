@@ -37,7 +37,7 @@ public class Solution {
      * @return
      */
     public int titleToNumber(String columnTitle) {
-
+        // 701 = 26*26+ 25
         int reduce = columnTitle.chars().reduce(0, (r, ch) -> r * 26 + (ch - 'A' + 1));
 
         return reduce;
