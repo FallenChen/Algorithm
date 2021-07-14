@@ -1,4 +1,4 @@
-package leetcode.smallest_range_covering_elements_from_k_lists;
+package leetcode.heap.smallest_range_covering_elements_from_k_lists;
 
 import java.util.Comparator;
 import java.util.List;
@@ -44,7 +44,7 @@ public class Solution {
         // PriorityQueue
         PriorityQueue<int[]> q = new PriorityQueue<>(Comparator.comparingInt(o -> nums.get(o[0]).get(o[1])));
 
-        int max = Integer.MIN_VALUE, start = 0, end = Integer.MIN_VALUE;
+        int max = Integer.MIN_VALUE, start = 0, end = Integer.MAX_VALUE;
         for (int i = 0; i < nums.size(); i++) {
             q.offer(new int[]{i, 0});
             max = Math.max(max, nums.get(i).get(0));
