@@ -24,7 +24,7 @@ public class Solution {
      * @param grid
      * @return
      */
-    public int minPathSum(int[][] grid) {
+    public static int minPathSum(int[][] grid) {
 
         // Suppose the minimum path sum of arriving at point (i, j) is S[i][j],
         // then the state equation is S[i][j] = min(S[i - 1][j], S[i][j - 1]) + grid[i][j].
@@ -52,5 +52,15 @@ public class Solution {
             }
         }
         return grid[m-1][n-1];
+    }
+
+    public static void main(String[] args) {
+        int[][] grid = { {1,2,9},
+                         {2,3,2},
+                         {4,5,9},
+                         {12,2,3}};
+
+        int i = minPathSum(grid);
+        System.out.println(i);
     }
 }
