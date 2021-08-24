@@ -1,4 +1,4 @@
-package leetcode.sort.maximum_gap;
+package leetcode.sorting.maximum_gap;
 
 import java.util.Arrays;
 

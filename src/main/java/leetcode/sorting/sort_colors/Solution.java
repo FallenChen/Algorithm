@@ -1,4 +1,4 @@
-package leetcode.sort.sort_colors;
+package leetcode.sorting.sort_colors;
 
 /**
  * @author cy
