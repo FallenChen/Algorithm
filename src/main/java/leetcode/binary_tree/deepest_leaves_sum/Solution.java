@@ -1,6 +1,4 @@
-package leetcode.binsry_tree.deepest_leaves_sum;
-
-import java.util.LinkedList;
+package leetcode.binary_tree.deepest_leaves_sum;
 
 /**
  * @author cy

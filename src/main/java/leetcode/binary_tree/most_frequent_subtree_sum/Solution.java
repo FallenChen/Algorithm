@@ -1,4 +1,4 @@
-package leetcode.binsry_tree.most_frequent_subtree_sum;
+package leetcode.binary_tree.most_frequent_subtree_sum;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package leetcode.binsry_tree.most_frequent_subtree_sum;
+package leetcode.binary_tree.deepest_leaves_sum;
 
 /**
  * @author cy
