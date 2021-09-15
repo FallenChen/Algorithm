@@ -1,4 +1,4 @@
-package leetcode.implement_trie;
+package leetcode.trie.implement_trie;
 
 /**
  * @ClassName Trie
