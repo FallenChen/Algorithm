@@ -3,7 +3,7 @@ package leetcode.dynamic_programming.best_time_to_buy_and_sell_stock;
 /**
  * @author cy
  * @className Solution
- * @description TODO
+ * @description
  * @date 2021/5/24 17:03
  */
 public class Solution {
@@ -63,9 +63,11 @@ public class Solution {
 //        return maxProfit;
 
         // Kadane's Algorithm
+        // 粗暴的高级解决方案
          int maxCur = 0, maxSoFar = 0;
          for(int i=1; i<prices.length;i++)
          {
+             // 累减累加起来等于减 a3 - a2 + a2 - a1 = a3 - a1
              maxCur = Math.max(0,maxCur+=(prices[i]-prices[i-1]));
              maxSoFar = Math.max(maxCur,maxSoFar);
          }
