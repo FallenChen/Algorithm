@@ -58,9 +58,5 @@ public class Solution {
         return min;
     }
 
-    public static void main(String[] args) {
-        int i = twoEggDrop(100);
-        System.out.println(i);
-    }
 
 }
