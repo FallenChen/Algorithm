@@ -1,9 +1,9 @@
-package leetcode.memoization.climbing_stairs;
+package leetcode.dynamic_programming.climbing_stairs;
 
 /**
  * @author cy
  * @className Solution
- * @description TODO
+ * @description
  * @date 2021/9/24 20:42
  */
 public class Solution {
@@ -35,13 +35,18 @@ public class Solution {
         {
             return n;
         }
+        // 1. dp数组及下标定义
         int[] dp = new int[n+1];
+        // 3.dp数组初始化
         dp[1] = 1;
         dp[2] = 2;
+        // 4.遍历顺序
         for(int i=3; i<=n; i++)
         {
+            // 2.递推公式
             dp[i] = dp[i-1] + dp[i-2];
         }
+        // 5.举例推到dp数组  1，2，3，5，8
         return dp[n];
     }
 }
