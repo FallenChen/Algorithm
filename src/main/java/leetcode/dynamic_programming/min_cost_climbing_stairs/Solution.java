@@ -75,18 +75,25 @@ public class Solution {
     // bottom up
     {
         int n = cost.length;
-        int first = cost[0];
-        int second = cost[1];
-        if(n<=2)
-        {
-            return Math.min(first,second);
-        }
+        // 1.dp数组
+        int dp[] = new int[n];
+        // 3.dp初始化
+        dp[0] = cost[0];
+        dp[1] = cost[1];
+        // 4.确定遍历顺序
         for(int i=2; i<n; i++)
         {
-            int curr = cost[i] + Math.min(first,second);
-            first = second;
-            second = curr;
+            // 2.递推公式
+            // 可以有两个途径得到dp[i]，一个是dp[i-1] 一个是dp[i-2]。
+            //
+            //那么究竟是选dp[i-1]还是dp[i-2]呢？
+            //
+            //一定是选最小的，所以dp[i] = min(dp[i - 1], dp[i - 2]) + cost[i]
+            dp[i] = Math.min(dp[i-1],dp[i-2]) + cost[i];
         }
-        return Math.min(first,second);
+        return Math.min(dp[n-1],dp[n-2]);
+        // 5.推到dp数组
+        // cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1]
+        //         1  100  2  3  3  103  4  5  104  6
     }
 }
