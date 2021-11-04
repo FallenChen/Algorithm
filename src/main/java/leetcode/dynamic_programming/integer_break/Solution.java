@@ -3,7 +3,7 @@ package leetcode.dynamic_programming.integer_break;
 /**
  * @author cy
  * @className Solution
- * @description TODO
+ * @description
  * @date 2021/10/18 20:06
  */
 public class Solution {
@@ -28,6 +28,7 @@ public class Solution {
      */
     public int integerBreak(int n) {
         //dp[i] means output when input = i, e.g. dp[4] = 4 (2*2),dp[8] = 18 (2*2*3)...
+
         int[] dp = new int[n + 1];
         dp[1] = 1;
         // fill the entire dp array
@@ -42,6 +43,28 @@ public class Solution {
                 dp[i] = Math.max(dp[i],(Math.max(j,dp[j])) * (Math.max(i-j, dp[i-j])));
             }
         }
+
         return dp[n];
     }
+
+//    public int integerBreak(int n)
+//    {
+//        // 1.拆分数字i，可以得到的最大乘积的值为dp[i]
+//        int[] dp = new int[n+1];
+//        // 3.dp初始化，2以下没有意义
+//        dp[2] = 1;
+//        // 4.遍历顺序
+//        for(int i=3; i<=n; i++)
+//        {
+//            for(int j=i; j<i-1; j++)
+//            {
+//                // 2.从1遍历j，两种渠道 j*(i-j), j*dp[i-j]
+//                dp[i] = Math.max(dp[i],Math.max((i-j)*j,dp[i-j]*j));
+//            }
+//        }
+//        // 2  3  4  5  6  7  8  9  10
+//        // 1  2  4  6  9  12 18 27 36
+//        //       2*2 2*3 3*3 3*4 2*3*3 3*3*3 4*3*3
+//        return dp[n];
+//    }
 }
