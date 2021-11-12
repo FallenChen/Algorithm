@@ -5,7 +5,7 @@ import java.util.Stack;
 /**
  * @author cy
  * @className MyQueue
- * @description TODO
+ * @description
  * @date 2021/9/21 09:50
  */
 public class MyQueue {
@@ -46,6 +46,8 @@ public class MyQueue {
     private  final Stack<Integer> input;
     private  final Stack<Integer> output;
 
+    // use two stack
+    // when pop, if output is empty then push all input
 
     /** Initialize your data structure here. */
     public MyQueue() {
