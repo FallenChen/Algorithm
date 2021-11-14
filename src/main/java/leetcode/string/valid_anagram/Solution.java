@@ -34,6 +34,7 @@ public class Solution {
         int[] alphabet = new int[26];
         for(int i=0; i<s.length();i++)
         {
+            // 相对值
             alphabet[s.charAt(i) - 'a']++;
         }
         for(int i=0; i<t.length();i++)
@@ -44,6 +45,7 @@ public class Solution {
         {
             if (i != 0)
             {
+                // 不为0，则是一方多或者少
                 return false;
             }
         }
