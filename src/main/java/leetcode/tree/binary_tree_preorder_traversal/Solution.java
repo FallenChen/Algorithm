@@ -2,6 +2,7 @@ package leetcode.tree.binary_tree_preorder_traversal;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * @author cy
@@ -32,12 +33,12 @@ public class Solution {
      * @param root
      * @return
      */
-    public List<Integer> preorderTraversal(TreeNode root)
-    {
-        List<Integer> ret = new ArrayList<>();
-        preorder(root,ret);
-        return ret;
-    }
+//    public List<Integer> preorderTraversal(TreeNode root)
+//    {
+//        List<Integer> ret = new ArrayList<>();
+//        preorder(root,ret);
+//        return ret;
+//    }
 
     private void preorder(TreeNode root, List<Integer> ret) {
         if(root != null)
@@ -47,5 +48,30 @@ public class Solution {
             preorder(root.right,ret);
 
         }
+    }
+
+    public List<Integer> preorderTraversal(TreeNode root)
+    {
+        List<Integer> result = new ArrayList<>();
+        if(root == null)
+        {
+            return result;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty())
+        {
+            TreeNode node = stack.pop();
+            result.add(node.val);
+            if(node.right !=null)
+            {
+               stack.push(node.right);
+            }
+            if(node.left !=null)
+            {
+                stack.push(node.left);
+            }
+        }
+        return result;
     }
 }
