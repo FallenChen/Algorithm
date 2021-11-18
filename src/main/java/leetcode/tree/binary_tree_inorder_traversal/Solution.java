@@ -54,6 +54,7 @@ public class Solution {
         }
     }
 
+    // 左-中-右， 入栈顺序:左-右
     private void stack(TreeNode root, List<Integer> res) {
         Stack<TreeNode> stack = new Stack<>();
         TreeNode curr = root;

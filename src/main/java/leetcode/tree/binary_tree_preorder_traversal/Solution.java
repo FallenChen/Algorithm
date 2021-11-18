@@ -50,6 +50,7 @@ public class Solution {
         }
     }
 
+    // 中-左-右  入栈顺序: 中-右-左
     public List<Integer> preorderTraversal(TreeNode root)
     {
         List<Integer> result = new ArrayList<>();
