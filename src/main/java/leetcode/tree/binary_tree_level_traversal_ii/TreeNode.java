@@ -1,4 +1,4 @@
-package leetcode.tree.binary_tree_level_traversal_ii.binary_tree_level_traversal;
+package leetcode.tree.binary_tree_level_traversal_ii;
 
 /**
  * @author cy
