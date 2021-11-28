@@ -1,6 +1,5 @@
 package leetcode.tree.n_ary_tree_level_order_traversal;
 
-import leetcode.tree.binary_tree_level_traversal.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
