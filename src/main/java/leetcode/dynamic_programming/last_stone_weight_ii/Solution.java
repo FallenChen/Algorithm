@@ -3,7 +3,7 @@ package leetcode.dynamic_programming.last_stone_weight_ii;
 /**
  * @author cy
  * @className Solution
- * @description TODO
+ * @description
  * @date 2021/12/18 20:11
  */
 public class Solution
@@ -40,24 +40,20 @@ public class Solution
      */
     public int lastStoneWeightII(int[] stones)
     {
-        boolean[] dp = new boolean[1501];
-        dp[0] = true;
-        int sumA = 0;
-        for(int a : stones)
+        int sum = 0;
+        for(int i: stones)
         {
-            sumA += a;
-            for (int i = Math.min(1500, sumA); i >= a; i--)
+            sum += i;
+        }
+        int target = sum / 2;
+        int[] dp = new int[target + 1];
+        for(int i = 0; i < stones.length; i++)
+        {
+            for(int j = target; j >= stones[i]; j--)
             {
-                dp[i] |= dp[i - a];
+                dp[j] = Math.max(dp[j], dp[j - stones[i]] + stones[i]);
             }
         }
-        for(int i= sumA/2; i >= 0; i--)
-        {
-            if(dp[i])
-            {
-                return sumA -i -i;
-            }
-        }
-        return 0;
+        return sum - 2 * dp[target];
     }
 }
