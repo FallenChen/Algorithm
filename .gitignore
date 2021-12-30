@@ -46,3 +46,8 @@ gradle-app.setting
 *.iml
 out
 gen
+
+# voscode project files
+./vscode
+
+bin/
