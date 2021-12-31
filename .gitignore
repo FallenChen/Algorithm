@@ -49,5 +49,6 @@ gen
 
 # voscode project files
 ./vscode
+.vscode/
 
 bin/
