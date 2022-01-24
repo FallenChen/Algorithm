@@ -1,4 +1,4 @@
-package leetcode.dynamic_programming.work_break;
+package leetcode.dynamic_programming.word_break;
 
 import java.util.List;
 
@@ -31,7 +31,7 @@ public class Solution
      * @param wordDict
      * @return
      */
-    public boolean workBreak(String s, List<String> wordDict)
+    public boolean wordBreak(String s, List<String> wordDict)
     {
         boolean[] f = new boolean[s.length() + 1];
 
