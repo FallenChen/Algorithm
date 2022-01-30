@@ -1,4 +1,4 @@
-package leetcode.dynamic_programming.one_and_zeroes;
+package leetcode.dynamic_programming.ones_and_zeroes;
 
 /**
  * @author cy
