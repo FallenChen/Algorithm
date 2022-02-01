@@ -1,4 +1,4 @@
-package leetcode.two_pointers.linked_list_cycle;
+package leetcode.linked_list.linked_list_cycle;
 
 /**
  * @author cy
