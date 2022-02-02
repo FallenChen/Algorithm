@@ -1,4 +1,4 @@
-package leetcode.two_pointers.sum4;
+package leetcode.two_pointers.four_sum;
 
 import java.util.ArrayList;
 import java.util.Arrays;
