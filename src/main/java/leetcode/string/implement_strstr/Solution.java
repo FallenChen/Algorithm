@@ -2,6 +2,7 @@ package leetcode.string.implement_strstr;
 
 public class Solution {
 	
+	// KMP algorithm
 	public int strStr(String haystack, String needle) {
 
 		if(needle.length() == 0)
