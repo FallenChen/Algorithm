@@ -1,56 +1,59 @@
 package leetcode.tree.find_mode_in_binary_search_tree;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class Solution {
 	
-	private int currVal;
-	private int currCount = 0;
-	private int maxCount = 0;
-	private int modeCount = 0;
-
-	private int[] modes;
+	List<Integer> resList;
+	int maxCount;
+	int count;
+	TreeNode prev;
 
 	public int[] findMode(TreeNode root) 
 	{
-		inorder(root);
-		modes = new int[modeCount];
-		modeCount = 0;
-		currCount = 0;
-		inorder(root);
-		return modes;
+		resList = new ArrayList<>();
+		maxCount = 0;
+		count = 0;
+		prev = null;
+
+		hasMode(root);
+		int[] res = new int[resList.size()];
+		for (int i = 0; i < resList.size(); i++) {
+		    res[i] = resList.get(i);
+		}
+		return res;
 	}
 
-	private void inorder(TreeNode root)
-	{
+	private void hasMode(TreeNode root) {
 		if(root == null)
-		{
 			return;
+		hasMode(root.left);
+
+		int val = root.val;
+
+		if(prev != null && prev.val == val)
+		{
+			count++;
 		}
-		inorder(root.left);
-		handleValue(root.val);
-		inorder(root.right);
+		else
+		{
+			count = 1;
+		}
+
+		if(count > maxCount)
+		{
+			maxCount = count;
+			resList.clear();
+			resList.add(val);
+		}
+		else if(count == maxCount)
+		{
+			resList.add(val);
+		}
+		prev = root;
+
+		hasMode(root.right);
 	}
 
-	public void handleValue(int val)
-	{
-		if(val != currVal)
-		{
-			currVal = val;
-			currCount = 0;
-		}
-		currCount++;
-		if(currCount > maxCount)
-		{
-			maxCount = currCount;
-			modeCount = 1;
-		}
-		else if (currCount == maxCount)
-		{
-			if(modes != null)
-			{
-				modes[modeCount] = currVal;
-			}
-			modeCount++;
-		}
-	}
 }
