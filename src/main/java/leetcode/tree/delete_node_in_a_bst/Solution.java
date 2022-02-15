@@ -1,4 +1,4 @@
-package leetcode.binary_search_tree.delete_node_in_a_bst;
+package leetcode.tree.delete_node_in_a_bst;
 
 /**
  * @author cy
@@ -36,29 +36,36 @@ public class Solution {
      */
     public TreeNode deleteNode(TreeNode root, int key)
     {
+        // node doesn't have left or right child
         if (root == null)
         {
             return null;
         }
-
+        
         if(key < root.val)
         {
             root.left = deleteNode(root.left, key);
-        }else if(key > root.val)
+        }
+        
+        else if(key > root.val)
         {
             root.right = deleteNode(root.right,key);
         }
         else
         {
+            // node only has right subtree- return the right subtree
             if(root.left == null)
             {
                 return root.right;
             }
+            // node only has left subtree- return the left subtree
             if(root.right == null)
             {
                 return root.left;
             }
-
+            // node has both left and right - find the minimum value in the right subtree, 
+            // set that value to the currently found node, 
+            // then recursively delete the minimum value in the right subtree
             TreeNode minNode = findMin(root.right);
             root.val = minNode.val;
             root.right = deleteNode(root.right, root.val);

@@ -1,4 +1,4 @@
-package leetcode.binary_search_tree.delete_node_in_a_bst;
+package leetcode.tree.delete_node_in_a_bst;
 
 /**
  * @author cy
