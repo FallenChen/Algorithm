@@ -1,3 +1,0 @@
-# algorithm
-
-Just for fun
