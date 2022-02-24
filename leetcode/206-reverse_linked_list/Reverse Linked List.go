@@ -1,4 +1,4 @@
-package reverselinkedlist
+package leetcode
 
 import (
 	"algorithm/structures"
