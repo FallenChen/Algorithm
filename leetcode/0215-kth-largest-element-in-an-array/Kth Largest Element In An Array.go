@@ -1,7 +1,7 @@
 package leetcode
 
 // import "sort"
-import "fmt"
+// import "fmt"
 
 func findKthLargest(nums []int, k int) int {
 	// 1
@@ -40,13 +40,6 @@ func partition(nums []int, left,right int) int {
 	}
 	nums[i+1], nums[right] = nums[right], nums[i+1]
 	return i + 1
-}
-
-func main() {
-	nums := []int{3,2,1,5,6,4}
-	k := 2
-	res := findKthLargest(nums, k)
-	fmt.Println(res)
 }
 	
 
