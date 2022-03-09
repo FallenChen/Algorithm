@@ -33,4 +33,5 @@ func reverseBetween(head *ListNode, left int, right int) *ListNode {
 		cur.Next = cur.Next.Next
 		pre.Next.Next = tmp
 	}
+	return newHead.Next
 }
