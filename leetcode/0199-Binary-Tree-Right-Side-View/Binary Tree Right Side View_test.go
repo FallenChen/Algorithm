@@ -39,8 +39,8 @@ func Test_Problem199(t *testing.T) {
 		// },
 
 		{
-			para199{[]int{3, 9, 20, structures.NULL, structures.NULL, 15, 7}},
-			ans199{[]int{3, 20, 7}},
+			para199{[]int{1, 2, 3, structures.NULL,5, structures.NULL, 4}},
+			ans199{[]int{1, 3, 4}},
 		},
 
 		// {
