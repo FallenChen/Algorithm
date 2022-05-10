@@ -13,6 +13,7 @@ func maxLength( arr []int ) int {
 			if valueIdx > left {
 				left = valueIdx
 			}
+			len = idx - left
 		}
 		h[right] = idx
 
