@@ -26,7 +26,7 @@ func lengthOfLIS(nums []int) int {
 			if tails[m] < num {
 				i = m + 1
 			}else{
-				j = m;
+				j = m
 			}
 		}
 		tails[i] = num;
