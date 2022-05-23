@@ -20,6 +20,7 @@ func dfs(grid [][]byte, i, j int) {
 	if i < 0 || i >= len(grid) || j < 0 || j >= len(grid[0]) || grid[i][j] == '0' {
 		return
 	}
+	// 删除此岛屿所有节点，避免重复搜索相同岛屿
 	grid[i][j] = '0'
 	dfs(grid, i-1, j)
 	dfs(grid, i+1, j)
