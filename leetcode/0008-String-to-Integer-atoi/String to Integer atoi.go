@@ -1,63 +1,34 @@
 package leetcode
 
+import "math"
+
 func myAtoi(s string) int {
     
-	maxInt, signAllowed, whitespaceAllowed, sign, digits := int64(2<<30), true, true, 1, []int{}
+	abs, sign, i, n := 0, 1, 0, len(s)
 
-	for _, c := range s {
-		if c == ' ' && whitespaceAllowed {
-			continue
-		}
-
-		if signAllowed {
-			if c == '+' {
-				signAllowed = false
-				whitespaceAllowed = false
-				continue
-			} else if c == '-' {
-				sign = -1
-				signAllowed = false
-				whitespaceAllowed = false
-				continue
-			}
-		}
-
-		if c < '0' || c > '9' {
-			break
-		}
-
-		whitespaceAllowed, signAllowed = false, false
-		digits = append(digits, int(c-48))
+	for i < n && s[i] == ' ' {
+		i++
 	}
 
-	var num, place int64
-	place, num = 1, 0
-	lastLeading0Index := -1
-	for i, d := range digits {
-		if d == 0 {
-			lastLeading0Index = i
-		} else {
-			break
+	if i < n {
+		if s[i] == '-' {
+			sign = -1
+			i++
+		} else if s[i] == '+' {
+			sign = 1
+			i++
 		}
 	}
-	if lastLeading0Index > -1 {
-		digits = digits[lastLeading0Index+1:]
-	}
-	var rtnMax int64
-	if sign > 0 {
-		rtnMax = maxInt - 1
-	} else {
-		rtnMax = maxInt
-	}
-	digitsCount := len(digits)
-	for i := digitsCount - 1; i >= 0; i-- {
-		num += int64(digits[i]) * place
-		place *= 10
-		if digitsCount-i > 10 || num > rtnMax {
-			return int(int64(sign) * rtnMax)
-		}
-	}
-	num *= int64(sign)
-	return int(num)
 
+	for i < n && s[i] >= '0' && s[i] <= '9' {
+		abs = 10*abs + int(s[i]-'0')
+		if sign*abs < math.MinInt32 { //整数超过 32 位有符号整数范围
+			return math.MinInt32
+		} else if sign*abs > math.MaxInt32 {
+			return math.MaxInt32
+		}
+		i++
+	}
+
+	return sign * abs
 }
