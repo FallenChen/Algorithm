@@ -7,31 +7,23 @@ type ListNode = structures.ListNode
 
 func reverseBetween(head *ListNode, left int, right int) *ListNode {
 
-	if head == nil {
-		return head
-	}
+	dummyNode := &ListNode{Val: -1}
 
-	// may be all reversed, head will lost, so we need to save it 
-	newHead := &ListNode{Val :0, Next: head}
-	pre := newHead
+	dummyNode.Next = head
 
-	for count :=0; pre.Next !=nil && count < left-1; count++ {
+	pre := dummyNode
+
+	for i:=0; i<left-1; i++ {
 		pre = pre.Next
-	}
-
-	if pre.Next == nil {
-		return head
 	}
 
 	cur := pre.Next
 
-	// 头插法
-	// 把所有节点插在pre后面
-	for i :=0; i < right - left ; i++ {
-		tmp := pre.Next
-		pre.Next = cur.Next
-		cur.Next = cur.Next.Next
-		pre.Next.Next = tmp
+	for i:=0; i< right-left; i++ {
+		next := cur.Next
+		cur.Next = next.Next
+		next.Next = pre.Next
+		pre.Next = next
 	}
-	return newHead.Next
+	return dummyNode.Next
 }
