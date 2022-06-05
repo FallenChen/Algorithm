@@ -3,7 +3,8 @@ package leetcode
 func longestValidParentheses(s string) int {
 
 	stack, res := []int{}, 0
-
+	stack = append(stack, -1)
+	
 	for i:=0; i<len(s); i++ {
 		if s[i] == '(' {
 			stack = append(stack, i)
