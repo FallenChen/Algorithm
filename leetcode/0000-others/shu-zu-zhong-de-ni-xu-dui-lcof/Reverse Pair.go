@@ -9,16 +9,16 @@ func mergeSort(nums []int, start, end int) int {
 		return 0
 	}
 
-	mid := start + (end - start)/2
+	mid := start + (end-start)/2
 	cnt := mergeSort(nums, start, mid) + mergeSort(nums, mid+1, end)
 	tmp := []int{}
-	i, j := start, mid + 1
-	for i<=mid && j<=end {
+	i, j := start, mid+1
+	for i <= mid && j <= end {
 		if nums[i] <= nums[j] {
 			tmp = append(tmp, nums[i])
 			cnt += j - (mid + 1)
 			i++
-		}else {
+		} else {
 			tmp = append(tmp, nums[j])
 			j++
 		}
@@ -26,13 +26,15 @@ func mergeSort(nums []int, start, end int) int {
 	for ; i <= mid; i++ {
 		tmp = append(tmp, nums[i])
 		cnt += end - (mid + 1) + 1
-	    }
-	    for ; j <= end; j++ {
+	}
+	for ; j <= end; j++ {
 		tmp = append(tmp, nums[j])
-	    }
-	    for i := start; i <= end; i++ {
-		nums[i] = tmp[i - start]
-	    }
-	    return cnt
-	
+	}
+
+	for i := start; i <= end; i++ {
+		nums[i] = tmp[i-start]
+	}
+
+	return cnt
+
 }
