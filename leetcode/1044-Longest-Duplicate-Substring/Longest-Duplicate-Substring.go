@@ -49,6 +49,7 @@ func check(arr []byte, m, a1, a2, mod1, mod2 int) int {
 	return -1
 }
 
+// todo hard
 func longestDupSubstring(s string) string {
 	rand.Seed(time.Now().UnixNano())
 	// 生成两个进制
