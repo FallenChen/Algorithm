@@ -1,10 +1,11 @@
 package leetcode
 
-func nextPermutation(nums []int)  {
-    
-	i,j := 0,0
+// https://leetcode.com/problems/next-permutation/discuss/?currentPage=1&orderBy=most_votes&query=
+func nextPermutation(nums []int) {
 
-	for i = len(nums) -2 ; i >= 0 ; i-- {
+	i, j := 0, 0
+
+	for i = len(nums) - 2; i >= 0; i-- {
 		if nums[i] < nums[i+1] {
 			break
 		}
@@ -12,7 +13,7 @@ func nextPermutation(nums []int)  {
 
 	if i >= 0 {
 
-		for j = len(nums)-1; j > i; j-- {
+		for j = len(nums) - 1; j > i; j-- {
 			if nums[j] > nums[i] {
 				break
 			}
@@ -20,10 +21,10 @@ func nextPermutation(nums []int)  {
 		swap(&nums, i, j)
 	}
 
-	reverse(&nums,i+1,len(nums)-1)
+	reverse(&nums, i+1, len(nums)-1)
 }
 
-func reverse(nums *[]int, i,j int){
+func reverse(nums *[]int, i, j int) {
 	for i < j {
 		swap(nums, i, j)
 		i++
@@ -31,7 +32,6 @@ func reverse(nums *[]int, i,j int){
 	}
 }
 
-
-func swap(nums *[]int, i,j int){
+func swap(nums *[]int, i, j int) {
 	(*nums)[i], (*nums)[j] = (*nums)[j], (*nums)[i]
 }
