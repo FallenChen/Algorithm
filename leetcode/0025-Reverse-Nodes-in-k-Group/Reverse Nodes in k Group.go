@@ -8,21 +8,21 @@ import (
 type ListNode = structures.ListNode
 
 func reverseKGroup(head *ListNode, k int) *ListNode {
-    if k == 1 {
-	return head
-    }
-    node := head
-
-    for i := 0; i < k; i++ {
-	if node == nil {
-	    return head
+	if k == 1 {
+		return head
 	}
-	node = node.Next
-    }
+	node := head
 
-    newHead := reverse(head,node)
-    head.Next = reverseKGroup(node,k)
-    return newHead
+	for i := 0; i < k; i++ {
+		if node == nil {
+			return head
+		}
+		node = node.Next
+	}
+
+	newHead := reverse(head, node)
+	head.Next = reverseKGroup(node, k)
+	return newHead
 }
 
 func reverse(first *ListNode, last *ListNode) *ListNode {
