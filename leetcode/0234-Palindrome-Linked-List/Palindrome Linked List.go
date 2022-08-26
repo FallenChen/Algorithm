@@ -4,7 +4,6 @@ import "algorithm/structures"
 
 type ListNode = structures.ListNode
 
-
 func isPalindrome(head *ListNode) bool {
 
 	if head == nil || head.Next == nil {
@@ -25,6 +24,7 @@ func isPalindrome(head *ListNode) bool {
 	preMiddle := p1
 	preCurrent := p1.Next
 
+	// 反转后半部分
 	for preCurrent.Next != nil {
 		current := preCurrent.Next
 		preCurrent.Next = current.Next
@@ -35,6 +35,7 @@ func isPalindrome(head *ListNode) bool {
 	p1 = head
 	p2 = preMiddle.Next
 
+	// 判断是否是回文
 	for p1 != preMiddle {
 		if p1.Val == p2.Val {
 			p1 = p1.Next
@@ -44,6 +45,7 @@ func isPalindrome(head *ListNode) bool {
 			break
 		}
 	}
+
 	if p1 == preMiddle {
 		if p2 != nil && p1.Val != p2.Val {
 			return false
