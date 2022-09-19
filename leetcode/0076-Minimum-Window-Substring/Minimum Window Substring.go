@@ -1,5 +1,6 @@
 package leetcode
 
+// todo
 func minWindow(s string, t string) string {
 
 	if s == "" || t == "" {
@@ -34,7 +35,7 @@ func minWindow(s string, t string) string {
 		}
 	}
 	if finalLeft != -1 {
-		result = string(s[finalLeft : finalRight+1])
+		result = s[finalLeft : finalRight+1]
 	}
 
 	return result
