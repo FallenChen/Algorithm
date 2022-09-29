@@ -24,6 +24,7 @@ func dfs(root *TreeNode, level int, res *[][]int) {
 	if level%2 == 0 {
 		(*res)[level] = append((*res)[level], root.Val)
 	} else {
+		// todo
 		(*res)[level] = append([]int{root.Val}, (*res)[level]...)
 	}
 
