@@ -2,66 +2,29 @@ package leetcode
 
 import (
 	"algorithm/structures"
-	"fmt"
 	"testing"
 )
 
-
-type question124 struct {
-	para124
-	ans124
-}
-
-// para 是参数
-// one 代表第一个参数
-type para124 struct {
-	one []int
-}
-
-// ans 是答案
-// one 代表第一个答案
-type ans124 struct {
-	one int
-}
-
-
-
-func Test_Problem124(t *testing.T) {
-	
-	qs := []question124{
-
+func Test_maxPathSum(t *testing.T) {
+	type args struct {
+		root *TreeNode
+	}
+	tests := []struct {
+		name string
+		args args
+		want int
+	}{
 		{
-			para124{[]int{}},
-			ans124{0},
-		},
-
-		{
-			para124{[]int{1}},
-			ans124{1},
-		},
-
-		{
-			para124{[]int{1, 2, 3}},
-			ans124{6},
-		},
-
-		{
-			para124{[]int{-10, 9, 20, structures.NULL, structures.NULL, 15, 7}},
-			ans124{42},
-		},
-		{
-			para124{[]int{10, 9, 20, structures.NULL, structures.NULL, 15, 7}},
-			ans124{54},
+			name: "test",
+			args: args{root: structures.Ints2TreeNode([]int{1, 2, 3})},
+			want: 6,
 		},
 	}
-
-	fmt.Printf("------------------------Leetcode Problem 124------------------------\n")
-
-	for _, q := range qs {
-		_, p := q.ans124, q.para124
-		fmt.Printf("【input】:%v      ", p)
-		root := structures.Ints2TreeNode(p.one)
-		fmt.Printf("【output】:%v      \n", maxPathSum(root))
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := maxPathSum(tt.args.root); got != tt.want {
+				t.Errorf("maxPathSum() = %v, want %v", got, tt.want)
+			}
+		})
 	}
-	fmt.Printf("\n\n\n")
 }
