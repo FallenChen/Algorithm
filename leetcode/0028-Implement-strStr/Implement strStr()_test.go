@@ -1,16 +1,28 @@
 package leetcode
 
-import (
-	"fmt"
-	"testing"
-)
+import "testing"
 
-func Test_Implement_strStr(t *testing.T){
-
-	haystack := "aabaabaafa"
-	needle := "aacdef"
-
-	result := strStr(haystack, needle)
-
-	fmt.Println(result)
+func Test_strStr(t *testing.T) {
+	type args struct {
+		haystack string
+		needle   string
+	}
+	tests := []struct {
+		name string
+		args args
+		want int
+	}{
+		{
+			name: "test",
+			args: args{haystack: "sadbutsad", needle: "sad"},
+			want: 0,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := strStr(tt.args.haystack, tt.args.needle); got != tt.want {
+				t.Errorf("strStr() = %v, want %v", got, tt.want)
+			}
+		})
+	}
 }
