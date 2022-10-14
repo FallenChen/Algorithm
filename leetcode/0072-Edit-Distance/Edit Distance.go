@@ -1,7 +1,8 @@
 package leetcode
 
+// todo hard
 func minDistance(word1 string, word2 string) int {
-    
+
 	l1, l2 := len(word1), len(word2)
 	// init [l1][l2] array
 	dp := make([][]int, l1+1)
@@ -16,8 +17,8 @@ func minDistance(word1 string, word2 string) int {
 		dp[0][j] = j
 	}
 
-	for i:=1; i<=l1; i++ {
-		for j:=1; j<=l2; j++ {
+	for i := 1; i <= l1; i++ {
+		for j := 1; j <= l2; j++ {
 			if word1[i-1] == word2[j-1] {
 				dp[i][j] = dp[i-1][j-1]
 			} else {
@@ -33,7 +34,7 @@ func minDistance(word1 string, word2 string) int {
 
 }
 
-func min(a,b int) int {
+func min(a, b int) int {
 	if a < b {
 		return a
 	}
