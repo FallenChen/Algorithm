@@ -5,7 +5,7 @@ import "algorithm/structures"
 type ListNode = structures.ListNode
 
 func hasCycle(head *ListNode) bool {
-    
+
 	fast := head
 	slow := head
 
