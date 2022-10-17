@@ -6,7 +6,7 @@ import "algorithm/structures"
 type ListNode = structures.ListNode
 
 func detectCycle(head *ListNode) *ListNode {
-    
+
 	if head == nil || head.Next == nil {
 		return nil
 	}
@@ -21,18 +21,18 @@ func detectCycle(head *ListNode) *ListNode {
 		fast = fast.Next
 		slow = slow.Next
 	}
-	return fast;
+	return fast
 
 }
 
 func hasCycle(head *ListNode) (bool, *ListNode) {
-    
+
 	fast, slow := head, head
 
 	for slow != nil && fast != nil && fast.Next != nil {
 		fast = fast.Next.Next
 		slow = slow.Next
-		if  slow == fast {
+		if slow == fast {
 			return true, slow
 		}
 	}
