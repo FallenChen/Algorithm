@@ -1,12 +1,14 @@
 package leetcode
 
-import "algorithm/structures"
+import (
+	"algorithm/structures"
+)
 
 // ListNode define
 type ListNode = structures.ListNode
 
 func getIntersectionNode(headA, headB *ListNode) *ListNode {
-    
+
 	if headA == nil || headB == nil {
 		return nil
 	}
