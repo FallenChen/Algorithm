@@ -46,8 +46,7 @@ func rightView(root *TreeNode, res *[]int, deep int) {
 	}
 
 	rightView(root.Right, res, deep+1)
-	rightView(root.Left, res, deep+1)
-
+	rightView(root.Left, res, deep+1) // 为了处理最后一个只有左节点的情况
 
 	// if deep == len(res) {
 	// 	res = append(res, root.Val)
@@ -56,4 +55,3 @@ func rightView(root *TreeNode, res *[]int, deep int) {
 	// rightView(root.Left, res, deep+1)
 	// rightView(root.Right, res,deep+1)
 }
-
