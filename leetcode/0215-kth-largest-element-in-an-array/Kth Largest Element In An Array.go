@@ -8,7 +8,7 @@ func findKthLargest(nums []int, k int) int {
 	// sort.Ints(nums)
 	// return nums[len(nums)-k]
 
-	// 2 
+	// 2
 	// m := len(nums) - k + 1
 	// return quickSelect(nums, 0, len(nums)-1, m)
 
@@ -17,39 +17,34 @@ func findKthLargest(nums []int, k int) int {
 	return num
 }
 
-func quick (nums []int, left, right, k int) int {
+func quick(nums []int, left, right, k int) int {
 	q := partition(nums, left, right)
-	
-	
+
 	if q == k {
-	    return nums[q]
+		return nums[q]
 	}
-	
+
 	if q > k {
-	    return quick(nums, left, q-1, k)
+		return quick(nums, left, q-1, k)
 	} else {
-	    return quick(nums, q+1, right, k)
+		return quick(nums, q+1, right, k)
 	}
-    }
-    
-    func partition(nums []int, left, right int) int {
-	
-	i, j, pivot := left,right, nums[left]
-	    
-	    for i < j {
+}
+
+func partition(nums []int, left, right int) int {
+	i, j, pivot := left, right, nums[left]
+	for i < j {
 		for i < j && nums[j] >= pivot {
-		    j--
+			j--
 		}
 		for i < j && nums[i] <= pivot {
-		    i++
+			i++
 		}
-		
 		nums[i], nums[j] = nums[j], nums[i]
-	    }
-	    
-	    nums[i], nums[left] = nums[left], nums[i]
+	}
+	nums[i], nums[left] = nums[left], nums[i]
 	return i
-    }
+}
 
 // func quickSelect(nums []int, left, right, i int) int {
 
@@ -79,5 +74,3 @@ func quick (nums []int, left, right, k int) int {
 // 	nums[i+1], nums[right] = nums[right], nums[i+1]
 // 	return i + 1
 // }
-	
-
