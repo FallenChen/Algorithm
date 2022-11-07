@@ -1,10 +1,8 @@
 package leetcode
 
-
-
 func maximalSquare(matrix [][]byte) int {
-    
-	rows,cols := len(matrix), len(matrix[0])
+
+	//rows,cols := len(matrix), len(matrix[0])
 
 	// maxsqlen := 0
 
@@ -71,13 +69,13 @@ func maximalSquare(matrix [][]byte) int {
 	// 0 1 2 3 2
 	// 0 0 1 2 3
 
-
+	// todo test fail
 	dp := make([][]int, len(matrix))
 	maxSide := 0
 
-	for i:=0; i<len(matrix); i++ {
+	for i := 0; i < len(matrix); i++ {
 		dp[i] = make([]int, len(matrix[i]))
-		for j:=0; j<len(matrix[i]); j++ {
+		for j := 0; j < len(matrix[i]); j++ {
 			dp[i][j] = int(matrix[i][j] - '0')
 			if dp[i][j] == 1 {
 				maxSide = 1
@@ -85,8 +83,8 @@ func maximalSquare(matrix [][]byte) int {
 		}
 	}
 
-	for i:=1; i<len(matrix); i++ {
-		for j:=1; j<len(matrix[i]); j++ {
+	for i := 1; i < len(matrix); i++ {
+		for j := 1; j < len(matrix[i]); j++ {
 			if dp[i][j] == 1 {
 				// 若对于位置 (i, j) 有 f[i][j] = 4，我们将以 (i, j) 为右下角、边长为 4 的正方形
 				// 涂上色，可以发现其左侧位置 (i, j - 1)，上方位置 (i - 1, j) 和
@@ -101,7 +99,6 @@ func maximalSquare(matrix [][]byte) int {
 	}
 
 	return maxSide * maxSide
-
 
 }
 
