@@ -9,51 +9,49 @@ import (
 type TreeNode = structures.TreeNode
 
 type Codec struct {
-
-	builder	strings.Builder
-	input	[]string
-    
+	builder strings.Builder
+	input   []string
 }
 
 func Constructor() Codec {
-    return Codec{}
+	return Codec{}
 }
 
 // Serializes a tree to a single string.
-func (this *Codec) serialize(root *TreeNode) string {
-    if root == nil {
-	    this.builder.WriteString("#,")
-	    return ""
-    }
+func (codec *Codec) serialize(root *TreeNode) string {
+	if root == nil {
+		codec.builder.WriteString("#,")
+		return ""
+	}
 
-    this.builder.WriteString(strconv.Itoa(root.Val) + ",")
-    this.serialize(root.Left)
-    this.serialize(root.Right)
-    return this.builder.String()
+	codec.builder.WriteString(strconv.Itoa(root.Val) + ",")
+	codec.serialize(root.Left)
+	codec.serialize(root.Right)
+	return codec.builder.String()
 }
 
 // Deserializes your encoded data to tree.
-func (this *Codec) deserialize(data string) *TreeNode {    
-    
+func (codec *Codec) deserialize(data string) *TreeNode {
+
 	if len(data) == 0 {
 		return nil
 	}
-	this.input = strings.Split(data, ",")
-	return this.deserializeHelper()
+	codec.input = strings.Split(data, ",")
+	return codec.deserializeHelper()
 }
 
-func (this *Codec) deserializeHelper() *TreeNode {
+func (codec *Codec) deserializeHelper() *TreeNode {
 
-	if this.input[0] == "#" {
-		this.input = this.input[1:]
+	if codec.input[0] == "#" {
+		codec.input = codec.input[1:]
 		return nil
 	}
 
-	val,_ := strconv.Atoi(this.input[0])
-	this.input = this.input[1:]
+	val, _ := strconv.Atoi(codec.input[0])
+	codec.input = codec.input[1:]
 	return &TreeNode{
-		Val: val,
-		Left: this.deserializeHelper(),
-		Right: this.deserializeHelper(),
+		Val:   val,
+		Left:  codec.deserializeHelper(),
+		Right: codec.deserializeHelper(),
 	}
 }

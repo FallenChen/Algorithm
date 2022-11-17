@@ -13,8 +13,8 @@ func Constructor() MedianFinder {
 	return MedianFinder{}
 }
 
-func (this *MedianFinder) AddNum(num int) {
-	minQ, maxQ := &this.queMin, &this.queMax
+func (medianFinder *MedianFinder) AddNum(num int) {
+	minQ, maxQ := &medianFinder.queMin, &medianFinder.queMax
 	if minQ.Len() == 0 || num <= -minQ.IntSlice[0] {
 		// why need negative,because go default heap is min-heap，so for max-heap
 		heap.Push(minQ, -num)
@@ -29,8 +29,8 @@ func (this *MedianFinder) AddNum(num int) {
 	}
 }
 
-func (this *MedianFinder) FindMedian() float64 {
-	minQ, maxQ := this.queMin, this.queMax
+func (medianFinder *MedianFinder) FindMedian() float64 {
+	minQ, maxQ := medianFinder.queMin, medianFinder.queMax
 	if minQ.Len() > maxQ.Len() {
 		return float64(-minQ.IntSlice[0])
 	}
