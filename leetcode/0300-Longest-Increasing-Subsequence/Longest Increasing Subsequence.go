@@ -1,9 +1,8 @@
 package leetcode
 
-
-
+// todo
 func lengthOfLIS(nums []int) int {
- 
+
 	// dp, res := make([]int, len(nums) + 1) , 0
 
 	// dp[0] = 0;
@@ -18,18 +17,18 @@ func lengthOfLIS(nums []int) int {
 	// }
 	// return res
 
-	tails,res := make([]int, len(nums)),0
+	tails, res := make([]int, len(nums)), 0
 	for _, num := range nums {
-		i,j := 0,res
+		i, j := 0, res
 		for i != j {
-			m := (i+j)/2
+			m := (i + j) / 2
 			if tails[m] < num {
 				i = m + 1
-			}else{
+			} else {
 				j = m
 			}
 		}
-		tails[i] = num;
+		tails[i] = num
 		if i == res {
 			res += 1
 		}
@@ -37,7 +36,7 @@ func lengthOfLIS(nums []int) int {
 	return res
 }
 
-func max(a ,b int) int {
+func max(a, b int) int {
 	if a > b {
 		return a
 	}
