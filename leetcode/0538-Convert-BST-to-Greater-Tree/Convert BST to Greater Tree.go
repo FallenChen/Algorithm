@@ -21,7 +21,8 @@ func dfs(root *TreeNode, sum *int) {
 	}
 
 	dfs(root.Right, sum)
+	// root.Val 也需要变化
 	root.Val += *sum
 	*sum = root.Val
-	dfs(root.Left,sum)
+	dfs(root.Left, sum)
 }
