@@ -1,6 +1,5 @@
 package leetcode
 
-
 func dailyTemperatures(temperatures []int) []int {
 
 	// res, j := make([]int, len(temperatures)),0
@@ -11,7 +10,7 @@ func dailyTemperatures(temperatures []int) []int {
 	// 			res[i] = j - i
 	// 			break
 	// 		}
-	// 	} 
+	// 	}
 	// }
 	// return res
 
@@ -19,13 +18,13 @@ func dailyTemperatures(temperatures []int) []int {
 
 	ans := make([]int, length)
 
-	stack := []int{}
+	var stack []int
 
-	for i:=0; i<length; i++ {
+	for i := 0; i < length; i++ {
 		temperature := temperatures[i]
 		// 用for而不是if!!!
-		for len(stack) > 0 && temperature > temperatures[stack[len(stack) - 1]] {
-			prevIndex := stack[len(stack) - 1]
+		for len(stack) > 0 && temperature > temperatures[stack[len(stack)-1]] {
+			prevIndex := stack[len(stack)-1]
 			stack = stack[:len(stack)-1]
 			ans[prevIndex] = i - prevIndex
 		}
@@ -33,6 +32,7 @@ func dailyTemperatures(temperatures []int) []int {
 	}
 	return ans
 }
+
 // 	维护一个存储下标的单调栈，从栈底到栈顶的下标对应的温度列表中的温度依次递减。
 //	如果一个下标在单调栈里，则表示尚未找到下一次温度更高的下标。
 //	[73,74,75,71,69,72,76,73]
