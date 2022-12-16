@@ -2,7 +2,7 @@ package leetcode
 
 import "testing"
 
-func TestLastRemaining_Solution(t *testing.T) {
+func TestLastRemainingSolution(t *testing.T) {
 	type args struct {
 		n int
 		m int
@@ -16,7 +16,7 @@ func TestLastRemaining_Solution(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := LastRemaining_Solution(tt.args.n, tt.args.m); got != tt.want {
+			if got := LastremainingSolution(tt.args.n, tt.args.m); got != tt.want {
 				t.Errorf("LastRemaining_Solution() = %v, want %v", got, tt.want)
 			}
 		})

@@ -1,7 +1,7 @@
 package leetcode
 
 // nowcoder NC139
-func LastRemaining_Solution(n int, m int) int {
+func LastremainingSolution(n int, m int) int {
 	if n == 0 || m == 0 {
 		return -1
 	}
